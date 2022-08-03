@@ -5,6 +5,20 @@ This application was generated using JHipster 7.8.1, you can find documentation 
 This is a "gateway" application intended to be part of a microservice architecture, please refer to the [Doing microservices with JHipster][] page of the documentation for more information.
 This application is configured for Service Discovery and Configuration with . On launch, it will refuse to start if it is not able to connect to .
 
+# Finalità
+
+In questo mvp si cercherà di riportare la ngx-admin in jhipster con già generazione del client su gateway angular
+
+## Modifiche fatte
+
+* Modificato package.json
+* Modificato pom.xml commentando npm install
+* Aggiunta typings.d.ts sotto a webapp
+* Aggiunta assets sotto a webapp
+* Aggiunta sotto di @core, @theme e pages sotto ad app
+* Aggiunta app.component.ts sotto ad app (ma da mergiare con il main.component di jhipster)
+
+
 ## Project Structure
 
 Node is required for generation and recommended for development. `package.json` is always generated for a better development experience with prettier, commit hooks, scripts and so on.
