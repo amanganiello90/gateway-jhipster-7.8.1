@@ -11,12 +11,12 @@ export class SeoService implements OnDestroy {
   private readonly destroy$ = new Subject<void>();
   private readonly dom: Document;
   private readonly isBrowser: boolean;
-  private linkCanonical: HTMLLinkElement;
+  private linkCanonical: HTMLLinkElement | undefined;
 
   constructor(
     private router: Router,
-    @Inject(NB_DOCUMENT) document,
-    @Inject(PLATFORM_ID) platformId,
+    @Inject(NB_DOCUMENT) document: any,
+    @Inject(PLATFORM_ID) platformId: any,
   ) {
     this.isBrowser = isPlatformBrowser(platformId);
     this.dom = document;
@@ -48,7 +48,7 @@ export class SeoService implements OnDestroy {
       takeUntil(this.destroy$),
     )
       .subscribe(() => {
-        this.linkCanonical.setAttribute('href', this.getCanonicalUrl());
+        this.linkCanonical?.setAttribute('href', this.getCanonicalUrl());
       });
   }
 

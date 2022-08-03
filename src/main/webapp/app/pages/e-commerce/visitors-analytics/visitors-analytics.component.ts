@@ -13,16 +13,16 @@ import { forkJoin } from 'rxjs';
 export class ECommerceVisitorsAnalyticsComponent implements OnDestroy {
   private alive = true;
 
-  pieChartValue: number;
-  chartLegend: {iconColor: string; title: string}[];
-  visitorsAnalyticsData: { innerLine: number[]; outerLine: OutlineData[]; };
+  pieChartValue: number | undefined;
+  chartLegend: any | undefined;
+  visitorsAnalyticsData: { innerLine: number[]; outerLine: OutlineData[]; } | undefined;
 
   constructor(private themeService: NbThemeService,
               private visitorsAnalyticsChartService: VisitorsAnalyticsData) {
     this.themeService.getJsTheme()
       .pipe(takeWhile(() => this.alive))
       .subscribe(theme => {
-        this.setLegendItems(theme.variables.visitorsLegend);
+        this.setLegendItems(theme.variables?.visitorsLegend);
       });
 
     forkJoin(
@@ -41,7 +41,7 @@ export class ECommerceVisitorsAnalyticsComponent implements OnDestroy {
       });
   }
 
-  setLegendItems(visitorsLegend): void {
+  setLegendItems(visitorsLegend: any): void {
     this.chartLegend = [
       {
         iconColor: visitorsLegend.firstIcon,

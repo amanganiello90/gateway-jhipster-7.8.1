@@ -13,13 +13,13 @@ export class TemperatureComponent implements OnDestroy {
 
   private alive = true;
 
-  temperatureData: Temperature;
-  temperature: number;
+  temperatureData: Temperature | undefined;
+  temperature: any | undefined;
   temperatureOff = false;
   temperatureMode = 'cool';
 
-  humidityData: Temperature;
-  humidity: number;
+  humidityData: Temperature | undefined;
+  humidity: any | undefined;
   humidityOff = false;
   humidityMode = 'heat';
 
@@ -31,7 +31,7 @@ export class TemperatureComponent implements OnDestroy {
     this.themeService.getJsTheme()
       .pipe(takeWhile(() => this.alive))
       .subscribe(config => {
-      this.theme = config.variables.temperature;
+      this.theme = config.variables?.temperature;
     });
 
     forkJoin(

@@ -79,23 +79,27 @@ export class EarningService extends EarningData {
     };
   }
 
-  getEarningLiveUpdateCardData(currency): Observable<any[]> {
-    const data = this.liveUpdateChartData[currency.toLowerCase()];
+  
+  getEarningLiveUpdateCardData(currency: any): Observable<any[]> {
+    /*const data = this.liveUpdateChartData[currency.toLowerCase()];
     const newValue = this.generateRandomLiveChartData();
 
     data.liveChart.shift();
     data.liveChart.push(newValue);
 
     return observableOf(data.liveChart);
+    */
+    return observableOf(currency);
   }
 
   getEarningCardData(currency: string): Observable<LiveUpdateChart> {
-    const data = this.liveUpdateChartData[currency.toLowerCase()];
+   // const data = this.liveUpdateChartData[currency.toLowerCase()];
 
-    data.liveChart = this.getDefaultLiveChartData(150);
+    //data.liveChart = this.getDefaultLiveChartData(150);
 
-    return observableOf(data);
+    return observableOf({} as LiveUpdateChart);
   }
+  
 
   getEarningPieChartData(): Observable<PieChart[]> {
     return observableOf(this.pieChartData);

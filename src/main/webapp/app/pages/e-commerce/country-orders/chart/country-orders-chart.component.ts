@@ -21,15 +21,15 @@ import { LayoutService } from '../../../../@core/utils/layout.service';
 })
 export class CountryOrdersChartComponent implements AfterViewInit, OnDestroy, OnChanges {
 
-  @Input() countryName: string;
-  @Input() data: number[];
-  @Input() maxValue: number;
-  @Input() labels: string[];
+  @Input() countryName: string | undefined;
+  @Input() data: number[] | undefined;
+  @Input() maxValue: any | undefined;
+  @Input() labels: string[] | undefined;
 
   private alive = true;
 
   option: any = {};
-  echartsInstance;
+  echartsInstance: { setOption: (arg0: { series: { data: number[]; }[]; }) => void; resize: () => void; } | undefined;
 
   constructor(private theme: NbThemeService,
               private layoutService: LayoutService) {
@@ -42,10 +42,10 @@ export class CountryOrdersChartComponent implements AfterViewInit, OnDestroy, On
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.data && !changes.data.isFirstChange()) {
-      this.echartsInstance.setOption({
+      this.echartsInstance?.setOption({
         series: [
           {
-            data: this.data.map(v => this.maxValue),
+            data : this.data?.map(v => this.maxValue) as any,
           },
           {
             data: this.data,
@@ -62,7 +62,7 @@ export class CountryOrdersChartComponent implements AfterViewInit, OnDestroy, On
     this.theme.getJsTheme()
       .pipe(takeWhile(() => this.alive))
       .subscribe(config => {
-        const countriesTheme: any = config.variables.countryOrders;
+        const countriesTheme: any = config.variables?.countryOrders;
 
         this.option = Object.assign({}, {
           grid: {
@@ -112,7 +112,7 @@ export class CountryOrdersChartComponent implements AfterViewInit, OnDestroy, On
           series: [
             { // For shadow
               type: 'bar',
-              data: this.data.map(v => this.maxValue),
+              data: this.data?.map(v => this.maxValue),
               cursor: 'default',
               itemStyle: {
                 normal: {
@@ -164,7 +164,7 @@ export class CountryOrdersChartComponent implements AfterViewInit, OnDestroy, On
       });
   }
 
-  onChartInit(ec) {
+  onChartInit(ec: any) {
     this.echartsInstance = ec;
   }
 

@@ -17,9 +17,9 @@ declare const echarts: any;
 })
 export class TrafficBarChartComponent implements AfterViewInit, OnDestroy, OnChanges {
 
-  @Input() data: number[];
-  @Input() labels: string[];
-  @Input() formatter: string;
+  @Input() data: number[] | undefined;
+  @Input() labels: string[] | undefined;
+  @Input() formatter: string | undefined;
 
   private alive = true;
 
@@ -35,7 +35,7 @@ export class TrafficBarChartComponent implements AfterViewInit, OnDestroy, OnCha
       .subscribe(() => this.resizeChart());
   }
 
-  onChartInit(ec) {
+  onChartInit(ec: any) {
     this.echartsInstance = ec;
   }
 
@@ -65,7 +65,7 @@ export class TrafficBarChartComponent implements AfterViewInit, OnDestroy, OnCha
     this.theme.getJsTheme()
       .pipe(takeWhile(() => this.alive))
       .subscribe(config => {
-        const trafficTheme: any = config.variables.trafficBarEchart;
+        const trafficTheme: any = config.variables?.trafficBarEchart;
 
         this.option = Object.assign({}, {
           grid: {

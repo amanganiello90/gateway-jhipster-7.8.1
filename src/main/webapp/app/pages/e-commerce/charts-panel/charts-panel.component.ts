@@ -16,13 +16,13 @@ export class ECommerceChartsPanelComponent implements OnDestroy {
 
   private alive = true;
 
-  chartPanelSummary: OrderProfitChartSummary[];
+  chartPanelSummary: OrderProfitChartSummary[] | undefined;
   period: string = 'week';
-  ordersChartData: OrdersChart;
-  profitChartData: ProfitChart;
+  ordersChartData: OrdersChart | undefined;
+  profitChartData: ProfitChart | undefined;
 
-  @ViewChild('ordersChart', { static: true }) ordersChart: OrdersChartComponent;
-  @ViewChild('profitChart', { static: true }) profitChart: ProfitChartComponent;
+  @ViewChild('ordersChart', { static: true }) ordersChart: OrdersChartComponent | undefined;
+  @ViewChild('profitChart', { static: true }) profitChart: ProfitChartComponent | undefined;
 
   constructor(private ordersProfitChartService: OrdersProfitChartData) {
     this.ordersProfitChartService.getOrderProfitChartSummary()
@@ -44,11 +44,11 @@ export class ECommerceChartsPanelComponent implements OnDestroy {
     this.getProfitChartData(value);
   }
 
-  changeTab(selectedTab) {
+  changeTab(selectedTab: { tabTitle: string; }) {
     if (selectedTab.tabTitle === 'Profit') {
-      this.profitChart.resizeChart();
+      this.profitChart?.resizeChart();
     } else {
-      this.ordersChart.resizeChart();
+      this.ordersChart?.resizeChart();
     }
   }
 

@@ -150,6 +150,8 @@ export class OrdersChartService extends OrdersChartData {
   }
 
   getOrdersChartData(period: string): OrdersChart {
-    return this.data[period];
+      
+    //return this.data[period];
+    return {} as OrdersChart;
   }
 }

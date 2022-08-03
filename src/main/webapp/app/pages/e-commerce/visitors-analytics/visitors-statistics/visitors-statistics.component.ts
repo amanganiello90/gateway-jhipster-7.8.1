@@ -13,10 +13,10 @@ export class ECommerceVisitorsStatisticsComponent implements AfterViewInit, OnDe
 
   private alive = true;
 
-  @Input() value: number;
+  @Input() value: number | undefined;
 
   option: any = {};
-  chartLegend: { iconColor: string; title: string }[];
+  chartLegend: any | undefined;
   echartsIntance: any;
 
   constructor(private theme: NbThemeService,
@@ -36,14 +36,14 @@ export class ECommerceVisitorsStatisticsComponent implements AfterViewInit, OnDe
       )
       .subscribe(config => {
         const variables: any = config.variables;
-        const visitorsPieLegend: any = config.variables.visitorsPieLegend;
+        const visitorsPieLegend: any = config.variables?.visitorsPieLegend;
 
         this.setOptions(variables);
         this.setLegendItems(visitorsPieLegend);
     });
   }
 
-  setLegendItems(visitorsPieLegend) {
+  setLegendItems(visitorsPieLegend: { firstSection: any; secondSection: any; }) {
     this.chartLegend = [
       {
         iconColor: visitorsPieLegend.firstSection,
@@ -56,7 +56,7 @@ export class ECommerceVisitorsStatisticsComponent implements AfterViewInit, OnDe
     ];
   }
 
-  setOptions(variables) {
+  setOptions(variables: { visitorsPie: any; fontSecondary: any; fgHeading: any; layoutBg: any; }) {
     const visitorsPie: any = variables.visitorsPie;
 
     this.option = {
@@ -112,7 +112,7 @@ export class ECommerceVisitorsStatisticsComponent implements AfterViewInit, OnDe
               hoverAnimation: false,
             },
             {
-              value: 100 - this.value,
+              value: 100 - 20,
               name: ' ',
               tooltip: {
                 show: false,
@@ -164,7 +164,7 @@ export class ECommerceVisitorsStatisticsComponent implements AfterViewInit, OnDe
               hoverAnimation: false,
             },
             {
-              value: 100 - this.value,
+              value: 100 - 10,
               name: ' ',
               tooltip: {
                 show: false,
@@ -199,7 +199,7 @@ export class ECommerceVisitorsStatisticsComponent implements AfterViewInit, OnDe
     };
   }
 
-  onChartInit(echarts) {
+  onChartInit(echarts: any) {
     this.echartsIntance = echarts;
   }
 

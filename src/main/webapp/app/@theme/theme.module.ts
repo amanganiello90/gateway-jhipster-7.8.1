@@ -18,8 +18,8 @@ import { NbSecurityModule } from '@nebular/security';
 
 import {
   FooterComponent,
-  HeaderComponent,
-  SearchInputComponent,
+ // HeaderComponent,
+ //  SearchInputComponent,
   TinyMCEComponent,
 } from './components';
 import {
@@ -29,15 +29,18 @@ import {
   TimingPipe,
   NumberWithCommasPipe,
 } from './pipes';
+
 import {
   OneColumnLayoutComponent,
   ThreeColumnsLayoutComponent,
-  TwoColumnsLayoutComponent,
+  TwoColumnsLayoutComponent
 } from './layouts';
+
 import { DEFAULT_THEME } from './styles/theme.default';
 import { COSMIC_THEME } from './styles/theme.cosmic';
 import { CORPORATE_THEME } from './styles/theme.corporate';
 import { DARK_THEME } from './styles/theme.dark';
+
 
 const NB_MODULES = [
   NbLayoutModule,
@@ -54,13 +57,13 @@ const NB_MODULES = [
   NbEvaIconsModule,
 ];
 const COMPONENTS = [
-  HeaderComponent,
+ // HeaderComponent,
   FooterComponent,
-  SearchInputComponent,
+ // SearchInputComponent,
   TinyMCEComponent,
   OneColumnLayoutComponent,
-  ThreeColumnsLayoutComponent,
-  TwoColumnsLayoutComponent,
+ ThreeColumnsLayoutComponent,
+TwoColumnsLayoutComponent,
 ];
 const PIPES = [
   CapitalizePipe,

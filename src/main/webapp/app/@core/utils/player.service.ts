@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 
 export class Track {
-  name: string;
-  artist: string;
-  url: string;
-  cover: string;
+  name: string | undefined;
+  artist: string | undefined;
+  url: string | undefined;
+  cover: string | undefined;
 }
 
 @Injectable()
 export class PlayerService {
-  current: number;
+  current: number | undefined;
   playlist: Track[] = [
     {
       name: 'Don\'t Wanna Fight',
@@ -48,19 +48,23 @@ export class PlayerService {
     if (this.current === this.playlist.length - 1) {
       this.current = 0;
     } else {
+      if(this.current) {
       this.current++;
+      }
     }
 
-    return this.playlist[this.current];
+    return this.playlist[this.current?this.current:0];
   }
 
   private getPrevTrack(): Track {
     if (this.current === 0) {
       this.current = this.playlist.length - 1;
     } else {
-      this.current--;
+      if(this.current) {
+        this.current--;
+        }
     }
 
-    return this.playlist[this.current];
+    return this.playlist[this.current?this.current:0];
   }
 }

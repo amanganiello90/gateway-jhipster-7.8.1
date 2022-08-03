@@ -15,7 +15,7 @@ export class TrafficCardsHeaderComponent implements OnDestroy {
   @Input() type: string = 'week';
 
   types: string[] = ['week', 'month', 'year'];
-  currentTheme: string;
+  currentTheme: string | undefined;
 
   constructor(private themeService: NbThemeService) {
     this.themeService.getJsTheme()

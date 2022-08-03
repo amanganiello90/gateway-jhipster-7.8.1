@@ -14,23 +14,40 @@ import './config/dayjs';
 import { SharedModule } from 'app/shared/shared.module';
 import { TranslationModule } from 'app/shared/language/translation.module';
 import { AppRoutingModule } from './app-routing.module';
-import { HomeModule } from './home/home.module';
+//import { HomeModule } from './home/home.module';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import { NgbDateDayjsAdapter } from './config/datepicker-adapter';
 import { fontAwesomeIcons } from './config/font-awesome-icons';
 import { httpInterceptorProviders } from 'app/core/interceptor/index';
 import { MainComponent } from './layouts/main/main.component';
 import { NavbarComponent } from './layouts/navbar/navbar.component';
-import { FooterComponent } from './layouts/footer/footer.component';
+//import { FooterComponent } from './layouts/footer/footer.component';
 import { PageRibbonComponent } from './layouts/profiles/page-ribbon.component';
 import { ActiveMenuDirective } from './layouts/navbar/active-menu.directive';
 import { ErrorComponent } from './layouts/error/error.component';
+
+// aggiunta
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CoreModule } from './@core/core.module';
+import { ThemeModule } from './@theme/theme.module';
+
+import {
+  NbChatModule,
+  NbDatepickerModule,
+  NbDialogModule,
+  NbMenuModule,
+  NbSidebarModule,
+  NbToastrModule,
+  NbWindowModule,
+} from '@nebular/theme';
+
+// fine aggiunta
 
 @NgModule({
   imports: [
     BrowserModule,
     SharedModule,
-    HomeModule,
+    //HomeModule,
     // jhipster-needle-angular-add-module JHipster will add new module here
     AppRoutingModule,
     // Set this to true to enable service worker (PWA)
@@ -38,6 +55,21 @@ import { ErrorComponent } from './layouts/error/error.component';
     HttpClientModule,
     NgxWebstorageModule.forRoot({ prefix: 'jhi', separator: '-', caseSensitive: true }),
     TranslationModule,
+   // aggiunta
+  
+    BrowserAnimationsModule,
+    NbSidebarModule.forRoot(),
+    NbMenuModule.forRoot(),
+    NbDatepickerModule.forRoot(),
+    NbDialogModule.forRoot(),
+    NbWindowModule.forRoot(),
+    NbToastrModule.forRoot(),
+    NbChatModule.forRoot({
+      messageGoogleMapKey: 'AIzaSyA_wNuCzia92MAmdLRzmqitRGvCF7wCZPY',
+    }),
+    CoreModule.forRoot(),
+    ThemeModule.forRoot(),
+    // fine aggiunta
   ],
   providers: [
     Title,
@@ -45,7 +77,9 @@ import { ErrorComponent } from './layouts/error/error.component';
     { provide: NgbDateAdapter, useClass: NgbDateDayjsAdapter },
     httpInterceptorProviders,
   ],
-  declarations: [MainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent],
+  declarations: [MainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective,
+     //FooterComponent
+    ],
   bootstrap: [MainComponent],
 })
 export class AppModule {

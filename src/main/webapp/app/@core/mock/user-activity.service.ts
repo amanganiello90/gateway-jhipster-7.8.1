@@ -7,7 +7,7 @@ import { UserActive, UserActivityData } from '../data/user-activity';
 export class UserActivityService extends UserActivityData {
 
   private getRandom = (roundTo: number) => Math.round(Math.random() * roundTo);
-  private generateUserActivityRandomData(date) {
+  private generateUserActivityRandomData(date: any) {
     return {
       date,
       pagesVisitCount: this.getRandom(1000),
@@ -52,6 +52,7 @@ export class UserActivityService extends UserActivityData {
   }
 
   getUserActivityData(period: string): Observable<UserActive[]> {
-    return observableOf(this.data[period]);
+    //return observableOf(this.data[period]);
+    return observableOf({} as UserActive[]);
   }
 }

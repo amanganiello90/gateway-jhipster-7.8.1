@@ -11,6 +11,11 @@ import { LoginService } from 'app/login/login.service';
 import { ProfileService } from 'app/layouts/profiles/profile.service';
 import { EntityNavbarItems } from 'app/entities/entity-navbar-items';
 
+// aggiunta
+import { NbSidebarService, NbThemeService } from '@nebular/theme';
+import { LayoutService } from '../../@core/utils';
+
+
 @Component({
   selector: 'jhi-navbar',
   templateUrl: './navbar.component.html',
@@ -33,7 +38,11 @@ export class NavbarComponent implements OnInit {
     private injector: Injector,
     private accountService: AccountService,
     private profileService: ProfileService,
-    private router: Router
+    private router: Router,
+    // aggiunta
+    private sidebarService: NbSidebarService,
+              private themeService: NbThemeService,
+              private layoutService: LayoutService,
   ) {
     if (VERSION) {
       this.version = VERSION.toLowerCase().startsWith('v') ? VERSION : `v${VERSION}`;
@@ -74,6 +83,20 @@ export class NavbarComponent implements OnInit {
   toggleNavbar(): void {
     this.isNavbarCollapsed = !this.isNavbarCollapsed;
   }
+
+  // aggiunta
+  changeTheme(themeName: string) {
+    this.themeService.changeTheme(themeName);
+  }
+
+  toggleSidebar(): boolean {
+    this.sidebarService.toggle(true, 'menu-sidebar');
+    this.layoutService.changeLayoutSize();
+
+    return false;
+  }
+
+  //
 
   private loadModule(moduleType: Type<any>): void {
     const moduleFactory = this.compiler.compileModuleAndAllComponentsSync(moduleType);

@@ -16,7 +16,16 @@ In questo mvp si cercherà di riportare la ngx-admin in jhipster con già genera
 * Aggiunta typings.d.ts sotto a webapp
 * Aggiunta assets sotto a webapp
 * Aggiunta sotto di @core, @theme e pages sotto ad app
-* Aggiunta app.component.ts sotto ad app (ma da mergiare con il main.component di jhipster)
+* Mergiato l'app.component.ts con il main.component.ts di jhipster
+* modificato src/main/webapp/app/@theme/theme.module.ts
+* modificato src/main/webapp/app/app-routing.module.ts
+* modificato src/main/webapp/app/app.module.ts
+* modificato src/main/webapp/app/layouts/main/main.component.ts
+* modificato src/main/webapp/app/layouts/navbar/navbar.component.html
+* modificato src/main/webapp/app/layouts/navbar/navbar.component.scss
+* modificato src/main/webapp/app/layouts/navbar/navbar.component.ts
+* modificato .eslintignore per disabilitare lint su tutto il progetto
+* modificato tsconfig aggiungendo strict, strictNullChecks,  strictBindCallApply, noImplicitAnyForClassMembers e noImplicitAny a false. suppressImplicitAnyIndexErrors a true 
 
 
 ## Project Structure

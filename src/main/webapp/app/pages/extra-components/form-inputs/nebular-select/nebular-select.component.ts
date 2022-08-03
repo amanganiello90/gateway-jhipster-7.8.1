@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
 export class NebularSelectComponent {
 
   commonSelectedItem = '2';
-  selectedItem;
+  selectedItem: any;
 }

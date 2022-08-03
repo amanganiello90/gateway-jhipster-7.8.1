@@ -1,5 +1,24 @@
+<!-- 
+<div class="header-container">
+  <div class="logo-container">
+    <a (click)="toggleSidebar()" href="#" class="sidebar-toggle">
+      <fa-icon icon="bars"></fa-icon>
+    </a>
+  </div>
+</div>
+-->
+
 <nav data-cy="navbar" class="navbar navbar-dark navbar-expand-md bg-dark">
   <div class="container-fluid">
+    <!-- aggiunta-->
+  <div class="header-container"> 
+    <div class="logo-container">
+      <a (click)="toggleSidebar()" href="/pages" class="sidebar-toggle">
+        <fa-icon icon="bars"></fa-icon>
+      </a>
+    </div>
+  </div>
+    <!-- aggiunta fine-->
     <a class="navbar-brand logo" routerLink="/" (click)="collapseNavbar()">
       <span class="logo-img"></span>
       <span jhiTranslate="global.title" class="navbar-title">Mygatewayclient</span>

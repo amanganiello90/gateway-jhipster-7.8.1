@@ -4,11 +4,7 @@ import { Component } from '@angular/core';
   selector: 'ngx-two-columns-layout',
   styleUrls: ['./two-columns.layout.scss'],
   template: `
-    <nb-layout windowMode>
-      <nb-layout-header fixed>
-        <ngx-header></ngx-header>
-      </nb-layout-header>
-
+  <nb-layout windowMode>
       <nb-sidebar class="menu-sidebar" tag="menu-sidebar" responsive>
         <ng-content select="nb-menu"></ng-content>
       </nb-sidebar>

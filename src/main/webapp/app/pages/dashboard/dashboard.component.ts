@@ -18,7 +18,7 @@ export class DashboardComponent implements OnDestroy {
 
   private alive = true;
 
-  solarValue: number;
+  solarValue: number | undefined;
   lightCard: CardSettings = {
     title: 'Light',
     iconClass: 'nb-lightbulb',
@@ -40,7 +40,7 @@ export class DashboardComponent implements OnDestroy {
     type: 'warning',
   };
 
-  statusCards: string;
+  statusCards: any;
 
   commonStatusCardsSet: CardSettings[] = [
     this.lightCard,
@@ -83,8 +83,9 @@ export class DashboardComponent implements OnDestroy {
     this.themeService.getJsTheme()
       .pipe(takeWhile(() => this.alive))
       .subscribe(theme => {
-        this.statusCards = this.statusCardsByThemes[theme.name];
-    });
+        //this.statusCards = this.statusCardsByThemes[theme.name];
+   
+      });
 
     this.solarService.getSolarData()
       .pipe(takeWhile(() => this.alive))

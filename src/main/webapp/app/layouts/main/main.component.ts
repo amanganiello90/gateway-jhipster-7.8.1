@@ -6,6 +6,10 @@ import dayjs from 'dayjs/esm';
 
 import { AccountService } from 'app/core/auth/account.service';
 
+// aggiunta
+import { AnalyticsService } from '../../@core/utils/analytics.service';
+import { SeoService } from '../..//@core/utils/seo.service';
+
 @Component({
   selector: 'jhi-main',
   templateUrl: './main.component.html',
@@ -18,12 +22,18 @@ export class MainComponent implements OnInit {
     private titleService: Title,
     private router: Router,
     private translateService: TranslateService,
-    rootRenderer: RendererFactory2
+    rootRenderer: RendererFactory2,
+    private analytics: AnalyticsService, private seoService: SeoService
   ) {
     this.renderer = rootRenderer.createRenderer(document.querySelector('html'), null);
   }
 
   ngOnInit(): void {
+
+    // aggiunta
+    this.analytics.trackPageViews();
+    this.seoService.trackCanonicalChanges();
+
     // try to log in automatically
     this.accountService.identity().subscribe();
 

@@ -42,6 +42,7 @@ export class TrafficBarService extends TrafficBarData {
   }
 
   getTrafficBarData(period: string): Observable<TrafficBar> {
-    return observableOf(this.data[period]);
+    return observableOf({} as TrafficBar);
+    //return observableOf(this.data[period]);
   }
 }

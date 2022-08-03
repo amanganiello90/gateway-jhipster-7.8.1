@@ -20,7 +20,7 @@ import { LayoutService } from '../../../../@core/utils/layout.service';
 export class OrdersChartComponent implements AfterViewInit, OnDestroy, OnChanges {
 
   @Input()
-  ordersChartData: OrdersChart;
+  ordersChartData: OrdersChart | undefined;
 
   private alive = true;
 
@@ -29,7 +29,7 @@ export class OrdersChartComponent implements AfterViewInit, OnDestroy, OnChanges
 
   ngOnChanges(): void {
     if (this.option) {
-      this.updateOrdersChartOptions(this.ordersChartData);
+      this.updateOrdersChartOptions(this.ordersChartData as OrdersChart);
     }
   }
 
@@ -49,14 +49,14 @@ export class OrdersChartComponent implements AfterViewInit, OnDestroy, OnChanges
         delay(1),
       )
       .subscribe(config => {
-        const eTheme: any = config.variables.orders;
+        const eTheme: any = config.variables?.orders;
 
         this.setOptions(eTheme);
-        this.updateOrdersChartOptions(this.ordersChartData);
+        this.updateOrdersChartOptions(this.ordersChartData as OrdersChart);
       });
   }
 
-  setOptions(eTheme) {
+  setOptions(eTheme: { tooltipLineColor: any; tooltipLineWidth: any; tooltipTextColor: any; tooltipFontSize: any; tooltipFontWeight: any; tooltipBg: any; tooltipBorderColor: any; tooltipExtraCss: any; axisTextColor: any; axisFontSize: any; axisLineColor: any; yAxisSplitLine: any; }) {
     this.option = {
       grid: {
         left: 40,
@@ -82,7 +82,7 @@ export class OrdersChartComponent implements AfterViewInit, OnDestroy, OnChanges
         backgroundColor: eTheme.tooltipBg,
         borderColor: eTheme.tooltipBorderColor,
         borderWidth: 1,
-        formatter: (params) => {
+        formatter: (params: { value: string; }) => {
           return Math.round(parseInt(params.value, 10));
         },
         extraCssText: eTheme.tooltipExtraCss,
@@ -138,7 +138,7 @@ export class OrdersChartComponent implements AfterViewInit, OnDestroy, OnChanges
     };
   }
 
-  getFirstLine(eTheme) {
+  getFirstLine(eTheme: { tooltipLineColor?: any; tooltipLineWidth?: any; tooltipTextColor?: any; tooltipFontSize?: any; tooltipFontWeight?: any; tooltipBg?: any; tooltipBorderColor?: any; tooltipExtraCss?: any; axisTextColor?: any; axisFontSize?: any; axisLineColor?: any; yAxisSplitLine?: any; firstAreaGradFrom?: any; firstAreaGradTo?: any; }) {
     return {
       type: 'line',
       smooth: true,
@@ -172,7 +172,7 @@ export class OrdersChartComponent implements AfterViewInit, OnDestroy, OnChanges
     };
   }
 
-  getSecondLine(eTheme) {
+  getSecondLine(eTheme: { tooltipLineColor?: any; tooltipLineWidth?: any; tooltipTextColor?: any; tooltipFontSize?: any; tooltipFontWeight?: any; tooltipBg?: any; tooltipBorderColor?: any; tooltipExtraCss?: any; axisTextColor?: any; axisFontSize?: any; axisLineColor?: any; yAxisSplitLine?: any; itemBorderColor?: any; lineWidth?: any; lineStyle?: any; secondLineGradFrom?: any; secondLineGradTo?: any; secondAreaGradFrom?: any; secondAreaGradTo?: any; }) {
     return         {
       type: 'line',
       smooth: true,
@@ -216,7 +216,7 @@ export class OrdersChartComponent implements AfterViewInit, OnDestroy, OnChanges
     };
   }
 
-  getThirdLine(eTheme) {
+  getThirdLine(eTheme: { tooltipLineColor?: any; tooltipLineWidth?: any; tooltipTextColor?: any; tooltipFontSize?: any; tooltipFontWeight?: any; tooltipBg?: any; tooltipBorderColor?: any; tooltipExtraCss?: any; axisTextColor?: any; axisFontSize?: any; axisLineColor?: any; yAxisSplitLine?: any; itemBorderColor?: any; lineWidth?: any; lineStyle?: any; thirdLineGradFrom?: any; thirdLineGradTo?: any; thirdAreaGradFrom?: any; thirdAreaGradTo?: any; }) {
     return {
       type: 'line',
       smooth: true,
@@ -272,7 +272,7 @@ export class OrdersChartComponent implements AfterViewInit, OnDestroy, OnChanges
     };
   }
 
-  getNewSeries(series, linesData: number[][]) {
+  getNewSeries(series: any[], linesData: number[][]) {
     return series.map((line, index) => {
       return {
         ...line,
@@ -281,14 +281,14 @@ export class OrdersChartComponent implements AfterViewInit, OnDestroy, OnChanges
     });
   }
 
-  getNewXAxis(xAxis, chartLabel: string[]) {
+  getNewXAxis(xAxis: any, chartLabel: string[]) {
     return {
       ...xAxis,
       data: chartLabel,
     };
   }
 
-  onChartInit(echarts) {
+  onChartInit(echarts: any) {
     this.echartsIntance = echarts;
   }
 

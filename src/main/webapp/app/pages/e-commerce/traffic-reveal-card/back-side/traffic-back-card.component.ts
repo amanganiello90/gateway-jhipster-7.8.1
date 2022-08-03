@@ -13,7 +13,7 @@ export class TrafficBackCardComponent implements OnDestroy {
 
   @Input() trafficBarData: any;
 
-  currentTheme: string;
+  currentTheme: string | undefined;
 
   constructor(private themeService: NbThemeService) {
     this.themeService.getJsTheme()

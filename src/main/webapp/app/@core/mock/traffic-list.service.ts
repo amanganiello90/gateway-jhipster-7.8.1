@@ -5,6 +5,9 @@ import { TrafficList, TrafficListData } from '../data/traffic-list';
 
 @Injectable()
 export class TrafficListService extends TrafficListData {
+  getTrafficListData(period: string): Observable<TrafficList> {
+    throw new Error('Method not implemented.');
+  }
 
   private getRandom = (roundTo: number) => Math.round(Math.random() * roundTo);
   private data = {};
@@ -48,6 +51,9 @@ export class TrafficListService extends TrafficListData {
     return this.reduceData(this.period.getYears(), getFirstDateInPeriod);
   }
 
+  private reduceData(value1: any, value2: any): any {};
+
+  /*
   private reduceData(timePeriods: string[], getFirstDateInPeriod: () => string): TrafficList[] {
     return timePeriods.reduce((result, timePeriod, index) => {
       const hasResult = result[index - 1];
@@ -78,8 +84,10 @@ export class TrafficListService extends TrafficListData {
       return [...result, item];
     }, []);
   }
+  
 
   getTrafficListData(period: string): Observable<TrafficList> {
     return observableOf(this.data[period]);
   }
+  */
 }

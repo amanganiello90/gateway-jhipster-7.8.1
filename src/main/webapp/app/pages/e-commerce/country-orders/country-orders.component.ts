@@ -28,7 +28,7 @@ export class CountryOrdersComponent implements OnInit, OnDestroy {
 
   countryName = '';
   countryData: number[] = [];
-  countriesCategories: string[];
+  countriesCategories: string[] | undefined;
   breakpoint: NbMediaBreakpoint = { name: '', width: 0 };
   breakpoints: any;
 

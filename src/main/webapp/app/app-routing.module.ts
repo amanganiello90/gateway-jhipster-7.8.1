@@ -8,6 +8,20 @@ import { Authority } from 'app/config/authority.constants';
 
 import { UserRouteAccessService } from 'app/core/auth/user-route-access.service';
 
+// aggiunta
+
+import { ExtraOptions, Routes } from '@angular/router';
+import {
+  NbAuthComponent,
+  NbLoginComponent,
+  NbLogoutComponent,
+  NbRegisterComponent,
+  NbRequestPasswordComponent,
+  NbResetPasswordComponent,
+} from '@nebular/auth';
+// fine aggiunta
+
+
 @NgModule({
   imports: [
     RouterModule.forRoot(
@@ -25,9 +39,47 @@ import { UserRouteAccessService } from 'app/core/auth/user-route-access.service'
           loadChildren: () => import(`./entities/entity-routing.module`).then(m => m.EntityRoutingModule),
         },
         navbarRoute,
-        ...errorRoute,
+       
+        // aggiunta
+      {
+        path: 'pages',
+        loadChildren: () => import('./pages/pages.module')
+          .then(m => m.PagesModule),
+      },
+      {
+        path: 'auth',
+        component: NbAuthComponent,
+        children: [
+          {
+            path: '',
+            component: NbLoginComponent,
+          },
+          {
+            path: 'login',
+            component: NbLoginComponent,
+          },
+          {
+            path: 'register',
+            component: NbRegisterComponent,
+          },
+          {
+            path: 'logout',
+            component: NbLogoutComponent,
+          },
+          {
+            path: 'request-password',
+            component: NbRequestPasswordComponent,
+          },
+          {
+            path: 'reset-password',
+            component: NbResetPasswordComponent,
+          },
+        ],
+      },
+      ...errorRoute,
       ],
-      { enableTracing: DEBUG_INFO_ENABLED }
+      { enableTracing: DEBUG_INFO_ENABLED },
+      
     ),
   ],
   exports: [RouterModule],

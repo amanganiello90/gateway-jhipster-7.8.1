@@ -23,7 +23,7 @@ export class ECommerceVisitorsAnalyticsChartComponent implements AfterViewInit, 
   @Input() chartData: {
     innerLine: number[];
     outerLine: OutlineData[];
-  };
+  } | undefined;
 
   option: any;
   themeSubscription: any;
@@ -45,13 +45,13 @@ export class ECommerceVisitorsAnalyticsChartComponent implements AfterViewInit, 
         takeWhile(() => this.alive),
       )
       .subscribe(config => {
-        const eTheme: any = config.variables.visitors;
+        const eTheme: any = config.variables?.visitors;
 
         this.setOptions(eTheme);
     });
   }
 
-  setOptions(eTheme) {
+  setOptions(eTheme: { tooltipLineColor: any; tooltipLineWidth: any; tooltipTextColor: any; tooltipFontWeight: any; tooltipBg: any; tooltipBorderColor: any; tooltipExtraCss: any; axisTextColor: any; axisFontSize: any; axisLineColor: any; yAxisSplitLine: any; }) {
     this.option = {
       grid: {
         left: 40,
@@ -77,7 +77,7 @@ export class ECommerceVisitorsAnalyticsChartComponent implements AfterViewInit, 
         backgroundColor: eTheme.tooltipBg,
         borderColor: eTheme.tooltipBorderColor,
         borderWidth: 1,
-        formatter: (params) => {
+        formatter: (params: { value: string; }[]) => {
           return Math.round(parseInt(params[0].value, 10));
         },
         extraCssText: eTheme.tooltipExtraCss,
@@ -86,7 +86,7 @@ export class ECommerceVisitorsAnalyticsChartComponent implements AfterViewInit, 
         type: 'category',
         boundaryGap: false,
         offset: 25,
-        data: this.chartData.outerLine.map(i => i.label),
+        data: this.chartData?.outerLine.map(i => i.label),
         axisTick: {
           show: false,
         },
@@ -132,7 +132,7 @@ export class ECommerceVisitorsAnalyticsChartComponent implements AfterViewInit, 
     };
   }
 
-  getOuterLine(eTheme) {
+  getOuterLine(eTheme: { tooltipLineColor?: any; tooltipLineWidth?: any; tooltipTextColor?: any; tooltipFontWeight?: any; tooltipBg?: any; tooltipBorderColor?: any; tooltipExtraCss?: any; axisTextColor?: any; axisFontSize?: any; axisLineColor?: any; yAxisSplitLine?: any; itemBorderColor?: any; lineWidth?: any; lineStyle?: any; lineGradFrom?: any; lineGradTo?: any; lineShadow?: any; areaGradFrom?: any; areaGradTo?: any; }) {
     return {
       type: 'line',
       smooth: true,
@@ -175,11 +175,11 @@ export class ECommerceVisitorsAnalyticsChartComponent implements AfterViewInit, 
           }]),
         },
       },
-      data: this.chartData.outerLine.map(i => i.value),
+      data: this.chartData?.outerLine.map(i => i.value),
     };
   }
 
-  getInnerLine(eTheme) {
+  getInnerLine(eTheme: any) {
     return {
       type: 'line',
       smooth: true,
@@ -215,11 +215,11 @@ export class ECommerceVisitorsAnalyticsChartComponent implements AfterViewInit, 
           opacity: 1,
         },
       },
-      data: this.chartData.innerLine,
+      data: this.chartData?.innerLine,
     };
   }
 
-  onChartInit(echarts) {
+  onChartInit(echarts: any) {
     this.echartsIntance = echarts;
   }
 

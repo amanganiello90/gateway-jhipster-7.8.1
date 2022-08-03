@@ -72,6 +72,7 @@ export class ProfitChartService extends ProfitChartData {
   }
 
   getProfitChartData(period: string): ProfitChart {
-    return this.data[period];
+    return {} as ProfitChart;
+    //return this.data[period];
   }
 }
