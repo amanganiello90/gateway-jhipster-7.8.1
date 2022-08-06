@@ -1,0 +1,29 @@
+{
+  "mygatewayclientApp": {
+    "mymicroFoo": {
+      "home": {
+        "title": "Foos",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Genera un nuovo Foo",
+        "createOrEditLabel": "Genera o modifica un Foo",
+        "notFound": "No Foos found"
+      },
+      "delete": {
+        "question": "Sei sicuro di volere eliminare Foo {{ id }}?"
+      },
+      "detail": {
+        "title": "Foo"
+      },
+      "id": "ID",
+      "code": "Code",
+      "value": "Value"
+    }
+  },
+  "mymicroApp": {
+    "mymicroFoo": {
+      "created": "&Egrave; stato generato un nuovo Foo con identificatore { param }}",
+      "updated": "&Egrave; stato aggiornato Foo identificato da {{ param }}",
+      "deleted": "&Egrave; stato eliminato Foo con identificatore {{ param }}"
+    }
+  }
+}

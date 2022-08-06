@@ -1,0 +1,22 @@
+{
+  "changelogDate": "20220806165842",
+  "clientRootFolder": "mymicro",
+  "databaseType": "sql",
+  "fields": [
+    {
+      "fieldName": "code",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "value",
+      "fieldType": "Integer"
+    }
+  ],
+  "microserviceName": "mymicro",
+  "microservicePath": "../mymicro",
+  "name": "Foo",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}

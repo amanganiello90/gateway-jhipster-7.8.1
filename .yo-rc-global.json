@@ -2,7 +2,8 @@
   "generator-jhipster:7.8.1": {
     "promptValues": {
       "packageName": "com.gatewayclient",
-      "nativeLanguage": "it"
+      "nativeLanguage": "it",
+      "microservicePath": "../mymicro"
     }
   }
 }
