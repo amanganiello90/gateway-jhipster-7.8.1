@@ -35,7 +35,7 @@
     "searchEngine": false,
     "serverPort": "8080",
     "serverSideOptions": [],
-    "serviceDiscoveryType": "no",
+    "serviceDiscoveryType": "eureka",
     "skipCheckLengthOfIdentifier": false,
     "skipFakeData": false,
     "skipUserManagement": true,

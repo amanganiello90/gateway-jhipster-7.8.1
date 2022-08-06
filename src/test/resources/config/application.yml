@@ -13,12 +13,22 @@
 # http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
 # ===================================================================
 
+eureka:
+  client:
+    enabled: false
+  instance:
+    appname: mygatewayclient
+    instanceId: mygatewayclient:${spring.application.instance-id:${random.value}}
+
 spring:
   application:
     name: mygatewayclient
   autoconfigure:
     exclude:
       - org.springframework.cloud.gateway.config.GatewayMetricsAutoConfiguration
+  cloud:
+    config:
+      enabled: false
 
   jackson:
     serialization:
