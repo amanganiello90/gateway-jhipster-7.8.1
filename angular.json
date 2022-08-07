@@ -23,7 +23,9 @@
             "assets": [
               "src/main/webapp/assets",
               "src/main/webapp/favicon.ico",
-              "src/main/webapp/favicon.png",
+              "src/main/webapp/content",
+              "src/main/webapp/manifest.webapp",
+              "src/main/webapp/robots.txt",
               {
                 "glob": "**/*",
                 "input": "node_modules/leaflet/dist/images",

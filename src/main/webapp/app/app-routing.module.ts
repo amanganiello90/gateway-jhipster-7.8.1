@@ -12,8 +12,6 @@ import {
 // aggiunta
 import { DEBUG_INFO_ENABLED } from 'app/app.constants';
 import { errorRoute } from './layouts/error/error.route';
-import { Authority } from 'app/config/authority.constants';
-import { UserRouteAccessService } from 'app/core/auth/user-route-access.service';
 
 export const routes: Routes = [
   {
@@ -51,22 +49,6 @@ export const routes: Routes = [
       },
     ],
   },
-  //{ path: '', redirectTo: 'pages', pathMatch: 'full' },
- // { path: '**', redirectTo: 'pages' },
-  // aggiunta
-  /*{
-    path: 'admin',
-    data: {
-      authorities: [Authority.ADMIN],
-    },
-    canActivate: [UserRouteAccessService],
-    loadChildren: () => import('./admin/admin-routing.module').then(m => m.AdminRoutingModule),
-  },
-  {
-    path: '',
-    loadChildren: () => import(`./entities/entity-routing.module`).then(m => m.EntityRoutingModule),
-  },
-  */
   ...errorRoute,
 ];
 
