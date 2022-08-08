@@ -32,7 +32,7 @@ export class BubbleMapComponent implements OnDestroy {
               private http: HttpClient) {
 
     combineLatest([
-      this.http.get('assets/map/world.json'),
+      this.http.get('content/assets/map/world.json'),
       this.theme.getJsTheme(),
     ])
       .pipe(takeWhile(() => this.alive))
